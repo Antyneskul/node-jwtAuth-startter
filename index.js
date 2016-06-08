@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 //connect to mongoDb
 mongoose.connect('mongodb://localhost:auth/auth');
@@ -15,6 +16,7 @@ mongoose.Promise = require('bluebird');
 
 //App Setup
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 router(app);
